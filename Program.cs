@@ -21,45 +21,32 @@ Console.WriteLine("Hello, World!");
 //durata del lavaggio, tempo rimanente alla fine del lavaggio.
 //3 - l’attuale incasso generato dall’utilizzo delle macchine.
 
-//Console.WriteLine("nome lavatrice: " + lavatrice1.Nome);
-//Console.WriteLine("stato lavatrice: " + lavatrice1.InFunzione);
-//Console.WriteLine("stato serbatoio detersivo: " + lavatrice1.SerbatoioDetersivo);
-//Console.WriteLine("stato serbatoio ammorbidente: " + lavatrice1.SerbatoioAmmorbidente);
-//Console.WriteLine("l'incasso è: " + lavatrice1.Incasso);
-
 Lavanderia lavanderia = new Lavanderia();
 lavanderia.StampaMacchine();
 
 
 //creiamo i programmi lavatrice
-ProgrammaLavatrice rinfrescante = new ProgrammaLavatrice("Rinfrescante", 2, 20, 20, 5);
-Console.WriteLine("nome programma lavatrice: " + rinfrescante.NomeProgramma);
-Console.WriteLine("costo programma lavatrice: " + rinfrescante.Costo);
-Console.WriteLine("durata programma lavatrice: " + rinfrescante.Durata);
-Console.WriteLine("detersivo programma lavatrice: " + rinfrescante.Detersivo);
-Console.WriteLine("ammorbidente programma lavatrice: " + rinfrescante.Ammorbidente);
+//ProgrammaLavatrice rinfrescante = new ProgrammaLavatrice("Rinfrescante", 2, 20, 20, 5);
+//Console.WriteLine("nome programma lavatrice: " + rinfrescante.NomeProgramma);
+//Console.WriteLine("costo programma lavatrice: " + rinfrescante.Costo);
+//Console.WriteLine("durata programma lavatrice: " + rinfrescante.Durata);
+//Console.WriteLine("detersivo programma lavatrice: " + rinfrescante.Detersivo);
+//Console.WriteLine("ammorbidente programma lavatrice: " + rinfrescante.Ammorbidente);
 
-ProgrammaLavatrice rinnovante = new ProgrammaLavatrice("Rinnovante", 2, 20, 20, 5);
-Console.WriteLine("nome programma lavatrice: " + rinnovante.NomeProgramma);
-Console.WriteLine("costo programma lavatrice: " + rinnovante.Costo);
-Console.WriteLine("durata programma lavatrice: " + rinnovante.Durata);
-Console.WriteLine("detersivo programma lavatrice: " + rinnovante.Detersivo);
-Console.WriteLine("ammorbidente programma lavatrice: " + rinnovante.Ammorbidente);
+//ProgrammaLavatrice rinnovante = new ProgrammaLavatrice("Rinnovante", 2, 20, 20, 5);
+//Console.WriteLine("nome programma lavatrice: " + rinnovante.NomeProgramma);
+//Console.WriteLine("costo programma lavatrice: " + rinnovante.Costo);
+//Console.WriteLine("durata programma lavatrice: " + rinnovante.Durata);
+//Console.WriteLine("detersivo programma lavatrice: " + rinnovante.Detersivo);
+//Console.WriteLine("ammorbidente programma lavatrice: " + rinnovante.Ammorbidente);
 
-ProgrammaLavatrice sgrassante = new ProgrammaLavatrice("Sgrassante", 2, 20, 20, 5);
-Console.WriteLine("nome programma lavatrice: " + sgrassante.NomeProgramma);
-Console.WriteLine("costo programma lavatrice: " + sgrassante.Costo);
-Console.WriteLine("durata programma lavatrice: " + sgrassante.Durata);
-Console.WriteLine("detersivo programma lavatrice: " + sgrassante.Detersivo);
-Console.WriteLine("ammorbidente programma lavatrice: " + sgrassante.Ammorbidente);
+//ProgrammaLavatrice sgrassante = new ProgrammaLavatrice("Sgrassante", 2, 20, 20, 5);
+//Console.WriteLine("nome programma lavatrice: " + sgrassante.NomeProgramma);
+//Console.WriteLine("costo programma lavatrice: " + sgrassante.Costo);
+//Console.WriteLine("durata programma lavatrice: " + sgrassante.Durata);
+//Console.WriteLine("detersivo programma lavatrice: " + sgrassante.Detersivo);
+//Console.WriteLine("ammorbidente programma lavatrice: " + sgrassante.Ammorbidente);
 
-//creiamo i programmi asciugatrice
-Asciugatrice asciugatrice1 = new Asciugatrice("Asciugatrice 1");
-Asciugatrice asciugatrice2 = new Asciugatrice("Asciugatrice 2");
-
-//Console.WriteLine("nome asciugatrice: " + asciugatrice1.Nome);
-//Console.WriteLine("stato asciugatrice: " + asciugatrice1.InFunzione);
-//Console.WriteLine("l'incasso è: " + asciugatrice1.Incasso);
 
 //creiamo i programmi asciugatrice
 ProgrammaAsciugatrice rapido = new ProgrammaAsciugatrice("Rapido", 2, 30);
@@ -195,12 +182,35 @@ public class Lavanderia
         Console.WriteLine("STATO LAVATRICI:");
         for (int i = 0; i < Lavatrici.Length; i++)
         {
-            Console.WriteLine("Nome lavatrice: " + Lavatrici[i].Nome + ", stato: " + Lavatrici[i].InFunzione);
+            Console.WriteLine("Nome lavatrice: " + Lavatrici[i].Nome);
+            if (Lavatrici[i].InFunzione)
+            {
+                Console.WriteLine("Stato: In lavaggio");
+            }
+            else
+            {
+                Console.WriteLine("Stato: inattiva");
+            }
+            Console.WriteLine("-----------------------");
         }
         Console.WriteLine("STATO ASCIUGATRICI:");
         for (int i = 0; i < Asciugatrici.Length; i++)
         {
-            Console.WriteLine("Nome asciugatrice: " + Asciugatrici[i].Nome + ", stato: " + Asciugatrici[i].InFunzione);
+            Console.WriteLine("Nome asciugatrice: " + Asciugatrici[i].Nome);
+            if (Asciugatrici[i].InFunzione)
+            {
+                Console.WriteLine("Stato: In lavaggio");
+            }
+            else
+            {
+                Console.WriteLine("Stato: inattiva");
+            }
+            Console.WriteLine("-----------------------");
         }
+    }
+
+    public void InterrogaMacchine()
+    {
+
     }
 }
