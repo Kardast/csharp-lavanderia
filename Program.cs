@@ -26,33 +26,74 @@ Console.WriteLine("Hello, World!");
 Lavatrice lavatrice1 = new Lavatrice("Lavatrice 1");
 Console.WriteLine("nome lavatrice: " + lavatrice1.Nome);
 Console.WriteLine("stato lavatrice: " + lavatrice1.InFunzione);
+Console.WriteLine("stato serbatoio detersivo: " + lavatrice1.SerbatoioDetersivo);
+Console.WriteLine("stato serbatoio ammorbidente: " + lavatrice1.SerbatoioAmmorbidente);
+Console.WriteLine("l'incasso è: " + lavatrice1.Incasso);
 
-Lavatrice lavatrice2 = new Lavatrice("Lavatrice 2");
-Console.WriteLine("nome lavatrice: " + lavatrice2.Nome);
-Console.WriteLine("stato lavatrice: " + lavatrice2.InFunzione);
+//creiamo i programmi lavatrice
+ProgrammaLavatrice rinfrescante = new ProgrammaLavatrice("Rinfrescante", 2, 20, 20, 5);
+Console.WriteLine("nome programma lavatrice: " + rinfrescante.NomeProgramma);
+Console.WriteLine("costo programma lavatrice: " + rinfrescante.Costo);
+Console.WriteLine("durata programma lavatrice: " + rinfrescante.Durata);
+Console.WriteLine("detersivo programma lavatrice: " + rinfrescante.Detersivo);
+Console.WriteLine("ammorbidente programma lavatrice: " + rinfrescante.Ammorbidente);
 
-Lavatrice lavatrice3 = new Lavatrice("Lavatrice 3");
-Console.WriteLine("nome lavatrice: " + lavatrice3.Nome);
-Console.WriteLine("stato lavatrice: " + lavatrice3.InFunzione);
+ProgrammaLavatrice rinnovante = new ProgrammaLavatrice("Rinnovante", 2, 20, 20, 5);
+Console.WriteLine("nome programma lavatrice: " + rinnovante.NomeProgramma);
+Console.WriteLine("costo programma lavatrice: " + rinnovante.Costo);
+Console.WriteLine("durata programma lavatrice: " + rinnovante.Durata);
+Console.WriteLine("detersivo programma lavatrice: " + rinnovante.Detersivo);
+Console.WriteLine("ammorbidente programma lavatrice: " + rinnovante.Ammorbidente);
 
-Lavatrice lavatrice4 = new Lavatrice("Lavatrice 4");
-Console.WriteLine("nome lavatrice: " + lavatrice4.Nome);
-Console.WriteLine("stato lavatrice: " + lavatrice4.InFunzione);
+ProgrammaLavatrice sgrassante = new ProgrammaLavatrice("Sgrassante", 2, 20, 20, 5);
+Console.WriteLine("nome programma lavatrice: " + sgrassante.NomeProgramma);
+Console.WriteLine("costo programma lavatrice: " + sgrassante.Costo);
+Console.WriteLine("durata programma lavatrice: " + sgrassante.Durata);
+Console.WriteLine("detersivo programma lavatrice: " + sgrassante.Detersivo);
+Console.WriteLine("ammorbidente programma lavatrice: " + sgrassante.Ammorbidente);
+
+//creiamo i programmi lavatrice
+Asciugatrice asciugatrice1 = new Asciugatrice("Asciugatrice 1", false);
+Console.WriteLine("nome asciugatrice: " + asciugatrice1.Nome);
+Console.WriteLine("stato asciugatrice: " + asciugatrice1.InFunzione);
+Console.WriteLine("l'incasso è: " + asciugatrice1.Incasso);
+
+//creiamo i programmi asciugatrice
+ProgrammaAsciugatrice rapido = new ProgrammaAsciugatrice("Rapido", 2, 30);
+Console.WriteLine("nome programma asciugatrice: " + rapido.NomeProgramma);
+Console.WriteLine("costo programma asciugatrice: " + rapido.Costo);
+Console.WriteLine("durata programma asciugatrice: " + rapido.Durata);
+
+ProgrammaAsciugatrice intenso = new ProgrammaAsciugatrice("Intenso", 4, 60);
+Console.WriteLine("nome programma asciugatrice: " + intenso.NomeProgramma);
+Console.WriteLine("costo programma asciugatrice: " + intenso.Costo);
+Console.WriteLine("durata programma asciugatrice: " + intenso.Durata);
+
+
+//Lavatrice lavatrice2 = new Lavatrice("Lavatrice 2");
+//Console.WriteLine("nome lavatrice: " + lavatrice2.Nome);
+//Console.WriteLine("stato lavatrice: " + lavatrice2.InFunzione);
+
+//Lavatrice lavatrice3 = new Lavatrice("Lavatrice 3");
+//Console.WriteLine("nome lavatrice: " + lavatrice3.Nome);
+//Console.WriteLine("stato lavatrice: " + lavatrice3.InFunzione);
+
+//Lavatrice lavatrice4 = new Lavatrice("Lavatrice 4");
+//Console.WriteLine("nome lavatrice: " + lavatrice4.Nome);
+//Console.WriteLine("stato lavatrice: " + lavatrice4.InFunzione);
 
 public class Lavatrice
 {
-    //attributi
-    private string nome;
-    private bool inFunzione;
-    private int serbatoioDetersivo;
-    private int serbatoioAmmorbidente;
-    private float incasso;
-
+    //costruttore
     public Lavatrice(string nome)
     {
         Nome = nome;
         Random rnd = new Random();
-        inFunzione = rnd.Next(2) == 1; // 0 = false, 1 = true;
+        var randomBool = rnd.Next(2) == 1; // 0 = false, 1 = true;
+        InFunzione = randomBool;
+        SerbatoioDetersivo = rnd.Next(1001);
+        SerbatoioAmmorbidente = rnd.Next(501);
+        Incasso = rnd.Next(501) * 0.50f;
     }
 
     //properties
@@ -66,26 +107,35 @@ public class Lavatrice
 //classe programma lavatrice
 public class ProgrammaLavatrice
 {
-    private string nomeProgramma;
-    private int costo;
-    private int durata;
-    private int detersivo;
-    private int ammorbidente;
+    //costruttore
+    public ProgrammaLavatrice (string nomeProgramma, int costo, int durata, int detersivo, int ammorbidente)
+    {
+        NomeProgramma = nomeProgramma;
+        Costo = costo;
+        Durata = durata;
+        Detersivo = detersivo;
+        Ammorbidente = ammorbidente;
+    }
 
     //properties
     public string NomeProgramma { get; }
-    public bool InFunzione { get; }
-    public int SerbatoioDetersivo { get; }
-    public int SerbatoioAmmorbidente { get; }
-    public float Incasso { get; }
+    public int Costo { get; }
+    public int Durata { get; }
+    public int Detersivo { get; }
+    public int Ammorbidente { get; }
 }
 
 //classe asciugatrice
 public class Asciugatrice
 {
-    private string nome;
-    private bool inFunzione;
-    private float incasso;
+    //costruttore
+    public Asciugatrice(string nome, bool inFunzione)
+    {
+        Nome = nome;
+        Random rnd = new Random();
+        InFunzione = inFunzione;
+        Incasso = rnd.Next(1, 101) * 0.50f;
+    }
 
     //properties
     public string Nome { get; }
@@ -96,11 +146,15 @@ public class Asciugatrice
 //classe programma asciugatrice
 public class ProgrammaAsciugatrice
 {
-    private string nomeProgramma;
-    private int costo;
-    private int durata;
+    //costruttore
+    public ProgrammaAsciugatrice(string nomeProgramma, int costo, int durata)
+    {
+        NomeProgramma = nomeProgramma;
+        Costo = costo;
+        Durata = durata;
+    }
 
     public string NomeProgramma { get; }
-    public bool Costo { get; }
-    public float Durata { get; }
+    public int Costo { get; }
+    public int Durata { get; }
 }
