@@ -21,14 +21,15 @@ Console.WriteLine("Hello, World!");
 //durata del lavaggio, tempo rimanente alla fine del lavaggio.
 //3 - l’attuale incasso generato dall’utilizzo delle macchine.
 
-//classe lavatrice
+//Console.WriteLine("nome lavatrice: " + lavatrice1.Nome);
+//Console.WriteLine("stato lavatrice: " + lavatrice1.InFunzione);
+//Console.WriteLine("stato serbatoio detersivo: " + lavatrice1.SerbatoioDetersivo);
+//Console.WriteLine("stato serbatoio ammorbidente: " + lavatrice1.SerbatoioAmmorbidente);
+//Console.WriteLine("l'incasso è: " + lavatrice1.Incasso);
 
-Lavatrice lavatrice1 = new Lavatrice("Lavatrice 1");
-Console.WriteLine("nome lavatrice: " + lavatrice1.Nome);
-Console.WriteLine("stato lavatrice: " + lavatrice1.InFunzione);
-Console.WriteLine("stato serbatoio detersivo: " + lavatrice1.SerbatoioDetersivo);
-Console.WriteLine("stato serbatoio ammorbidente: " + lavatrice1.SerbatoioAmmorbidente);
-Console.WriteLine("l'incasso è: " + lavatrice1.Incasso);
+Lavanderia lavanderia = new Lavanderia();
+lavanderia.StampaMacchine();
+
 
 //creiamo i programmi lavatrice
 ProgrammaLavatrice rinfrescante = new ProgrammaLavatrice("Rinfrescante", 2, 20, 20, 5);
@@ -52,11 +53,13 @@ Console.WriteLine("durata programma lavatrice: " + sgrassante.Durata);
 Console.WriteLine("detersivo programma lavatrice: " + sgrassante.Detersivo);
 Console.WriteLine("ammorbidente programma lavatrice: " + sgrassante.Ammorbidente);
 
-//creiamo i programmi lavatrice
-Asciugatrice asciugatrice1 = new Asciugatrice("Asciugatrice 1", false);
-Console.WriteLine("nome asciugatrice: " + asciugatrice1.Nome);
-Console.WriteLine("stato asciugatrice: " + asciugatrice1.InFunzione);
-Console.WriteLine("l'incasso è: " + asciugatrice1.Incasso);
+//creiamo i programmi asciugatrice
+Asciugatrice asciugatrice1 = new Asciugatrice("Asciugatrice 1");
+Asciugatrice asciugatrice2 = new Asciugatrice("Asciugatrice 2");
+
+//Console.WriteLine("nome asciugatrice: " + asciugatrice1.Nome);
+//Console.WriteLine("stato asciugatrice: " + asciugatrice1.InFunzione);
+//Console.WriteLine("l'incasso è: " + asciugatrice1.Incasso);
 
 //creiamo i programmi asciugatrice
 ProgrammaAsciugatrice rapido = new ProgrammaAsciugatrice("Rapido", 2, 30);
@@ -69,21 +72,9 @@ Console.WriteLine("nome programma asciugatrice: " + intenso.NomeProgramma);
 Console.WriteLine("costo programma asciugatrice: " + intenso.Costo);
 Console.WriteLine("durata programma asciugatrice: " + intenso.Durata);
 
-
-//Lavatrice lavatrice2 = new Lavatrice("Lavatrice 2");
-//Console.WriteLine("nome lavatrice: " + lavatrice2.Nome);
-//Console.WriteLine("stato lavatrice: " + lavatrice2.InFunzione);
-
-//Lavatrice lavatrice3 = new Lavatrice("Lavatrice 3");
-//Console.WriteLine("nome lavatrice: " + lavatrice3.Nome);
-//Console.WriteLine("stato lavatrice: " + lavatrice3.InFunzione);
-
-//Lavatrice lavatrice4 = new Lavatrice("Lavatrice 4");
-//Console.WriteLine("nome lavatrice: " + lavatrice4.Nome);
-//Console.WriteLine("stato lavatrice: " + lavatrice4.InFunzione);
-
 public class Lavatrice
 {
+
     //costruttore
     public Lavatrice(string nome)
     {
@@ -129,11 +120,12 @@ public class ProgrammaLavatrice
 public class Asciugatrice
 {
     //costruttore
-    public Asciugatrice(string nome, bool inFunzione)
+    public Asciugatrice(string nome)
     {
         Nome = nome;
         Random rnd = new Random();
-        InFunzione = inFunzione;
+        var randomBool = rnd.Next(2) == 1; // 0 = false, 1 = true;
+        InFunzione = randomBool;
         Incasso = rnd.Next(1, 101) * 0.50f;
     }
 
@@ -157,4 +149,58 @@ public class ProgrammaAsciugatrice
     public string NomeProgramma { get; }
     public int Costo { get; }
     public int Durata { get; }
+}
+
+//classe lavanderia
+public class Lavanderia
+{
+    public Lavatrice[] Lavatrici { get; }
+    public Asciugatrice[] Asciugatrici { get; }
+
+    //costruttore
+    public Lavanderia()
+    {
+
+        Lavatrici = new Lavatrice[5];
+
+        Lavatrice lavatrice1 = new Lavatrice("Lavatrice 1");
+        Lavatrice lavatrice2 = new Lavatrice("Lavatrice 2");
+        Lavatrice lavatrice3 = new Lavatrice("Lavatrice 3");
+        Lavatrice lavatrice4 = new Lavatrice("Lavatrice 4");
+        Lavatrice lavatrice5 = new Lavatrice("Lavatrice 5");
+
+        Lavatrici[0] = lavatrice1;
+        Lavatrici[1] = lavatrice2;
+        Lavatrici[2] = lavatrice3;
+        Lavatrici[3] = lavatrice4;
+        Lavatrici[4] = lavatrice5;
+
+        Asciugatrici = new Asciugatrice[5];
+
+        Asciugatrice asciugatrice1 = new Asciugatrice("Asciugatrice 1");
+        Asciugatrice asciugatrice2 = new Asciugatrice("Asciugatrice 2");
+        Asciugatrice asciugatrice3 = new Asciugatrice("Asciugatrice 3");
+        Asciugatrice asciugatrice4 = new Asciugatrice("Asciugatrice 4");
+        Asciugatrice asciugatrice5 = new Asciugatrice("Asciugatrice 5");
+
+        Asciugatrici[0] = asciugatrice1;
+        Asciugatrici[1] = asciugatrice2;
+        Asciugatrici[2] = asciugatrice3;
+        Asciugatrici[3] = asciugatrice4;
+        Asciugatrici[4] = asciugatrice5;
+    }
+
+    public void StampaMacchine()
+    {
+        Console.WriteLine("STATO LAVATRICI:");
+        for (int i = 0; i < Lavatrici.Length; i++)
+        {
+            Console.WriteLine("Nome lavatrice: " + Lavatrici[i].Nome + ", stato: " + Lavatrici[i].InFunzione);
+        }
+        Console.WriteLine("STATO ASCIUGATRICI:");
+        for (int i = 0; i < Asciugatrici.Length; i++)
+        {
+            Console.WriteLine("Nome asciugatrice: " + Asciugatrici[i].Nome + ", stato: " + Asciugatrici[i].InFunzione);
+        }
+    }
 }
