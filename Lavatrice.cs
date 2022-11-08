@@ -14,27 +14,11 @@ public class Lavatrice : Macchina
         ProgrammiLavatrice[1] = new ProgrammaLavatrice("Rinnovante", 3, 40, 40, 10);
         ProgrammiLavatrice[2] = new ProgrammaLavatrice("Sgrassante", 4, 60, 60, 15);
 
-        //ProgrammaInCorso = AssegnaProgramma();
     }
 
-    //metodi
-    //public override string AssegnaProgramma()
-    //{
-    //    if (InFunzione)
-    //    {
-    //        Random rnd = new Random();
-    //        int rndInt = rnd.Next(0, 3);
-    //        return ProgrammaInCorso = ProgrammiLavatrice[rndInt].Nome;
-    //    }
-    //    else
-    //    {
-    //        return ProgrammaInCorso = "nessuno";
-    //    }
-    //}
-
     //properties
-    public int SerbatoioDetersivo { get; }
-    public int SerbatoioAmmorbidente { get; }
-    public ProgrammaLavatrice[] ProgrammiLavatrice { get; }
+    public int SerbatoioDetersivo { get; set; }
+    public int SerbatoioAmmorbidente { get; set; }
+    public ProgrammaLavatrice[] ProgrammiLavatrice { get; set; }
 
 }

@@ -10,6 +10,6 @@ public class ProgrammaLavatrice : Programma
     }
 
     //properties
-    public int Detersivo { get; }
-    public int Ammorbidente { get; }
+    public int Detersivo { get; set; }
+    public int Ammorbidente { get; set; }
 }

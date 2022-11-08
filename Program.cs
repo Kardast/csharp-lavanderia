@@ -21,10 +21,21 @@ Console.WriteLine("Hello, World!");
 //durata del lavaggio, tempo rimanente alla fine del lavaggio.
 //3 - l’attuale incasso generato dall’utilizzo delle macchine.
 
+
+//snippet per il tempo programma
+//TempoRimanente = new Random().Next(0, ProgrammaInEsecuzione.Durata + 1);
+//public void SimulaAvanzamento()
+//{
+//    TempoRimanente = new Random().Next(0, TempoRimanente);
+//}
+
+
 Lavanderia lavanderia = new Lavanderia();
 lavanderia.AssegnaProgramma();
 lavanderia.StampaMacchine();
 
+//incasso
+lavanderia.IncassoTotale();
 Console.WriteLine("Vuoi interrogare una lavatrice o un'asciugatrice? [lavatrice/asciugatrice]");
 string interrogazione = Console.ReadLine();
 lavanderia.InterrogaMacchine(interrogazione);

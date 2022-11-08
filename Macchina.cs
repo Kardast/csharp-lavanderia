@@ -17,7 +17,5 @@ public abstract class Macchina
     public float Incasso { get; set; }
     public string ProgrammaInCorso { get; set; }
     public int DurataProgrammaInCorso { get; set; }
-
-    //metodi
-    //public abstract string AssegnaProgramma();
+    public int TempoRimanente { get; set; }
 }
