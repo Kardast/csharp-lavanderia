@@ -22,5 +22,9 @@ Console.WriteLine("Hello, World!");
 //3 - l’attuale incasso generato dall’utilizzo delle macchine.
 
 Lavanderia lavanderia = new Lavanderia();
+lavanderia.AssegnaProgramma();
 lavanderia.StampaMacchine();
-lavanderia.InterrogaMacchine();
+
+Console.WriteLine("Vuoi interrogare una lavatrice o un'asciugatrice? [lavatrice/asciugatrice]");
+string interrogazione = Console.ReadLine();
+lavanderia.InterrogaMacchine(interrogazione);

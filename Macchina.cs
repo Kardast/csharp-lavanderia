@@ -8,7 +8,7 @@ public abstract class Macchina
         Random rnd = new Random();
         var randomBool = rnd.Next(2) == 1; // 0 = false, 1 = true;
         InFunzione = randomBool;
-        Incasso = rnd.Next(501) * 0.50f;
+        Incasso = 0;
     }
 
     //props
@@ -16,7 +16,8 @@ public abstract class Macchina
     public bool InFunzione { get; set; }
     public float Incasso { get; set; }
     public string ProgrammaInCorso { get; set; }
+    public int DurataProgrammaInCorso { get; set; }
 
     //metodi
-    public abstract string AssegnaProgramma();
+    //public abstract string AssegnaProgramma();
 }

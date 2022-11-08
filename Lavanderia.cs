@@ -26,12 +26,38 @@ public class Lavanderia
         Asciugatrici[4] = new Asciugatrice("Asciugatrice 5");
     }
 
+    public void AssegnaProgramma()
+    {
+        for (int i = 0; i < Lavatrici.Length; i++)
+        {
+            if (Lavatrici[i].InFunzione)
+            {
+                Random rnd = new Random();
+                int rndInt = rnd.Next(0, 3);
+                Lavatrici[i].ProgrammaInCorso = Lavatrici[i].ProgrammiLavatrice[rndInt].Nome;
+                Lavatrici[i].DurataProgrammaInCorso = Lavatrici[i].ProgrammiLavatrice[rndInt].Durata;
+            }
+        }
+
+        for (int i = 0; i < Asciugatrici.Length; i++)
+        {
+            if (Asciugatrici[i].InFunzione)
+            {
+                Random rnd = new Random();
+                int rndInt = rnd.Next(0, 2);
+                Asciugatrici[i].ProgrammaInCorso = Asciugatrici[i].ProgrammiAsciugatrice[rndInt].Nome;
+                Asciugatrici[i].DurataProgrammaInCorso = Asciugatrici[i].ProgrammiAsciugatrice[rndInt].Durata;
+            }
+        }
+    }
+
     public void StampaMacchine()
     {
         Console.WriteLine("STATO LAVATRICI:");
         for (int i = 0; i < Lavatrici.Length; i++)
         {
             Console.WriteLine("Nome lavatrice: " + Lavatrici[i].Nome);
+            Console.WriteLine("Programma lavatrice: " + Lavatrici[i].ProgrammaInCorso);
             if (Lavatrici[i].InFunzione)
             {
                 Console.WriteLine("Stato: In lavaggio");
@@ -46,9 +72,10 @@ public class Lavanderia
         for (int i = 0; i < Asciugatrici.Length; i++)
         {
             Console.WriteLine("Nome asciugatrice: " + Asciugatrici[i].Nome);
+            Console.WriteLine("Programma asciugatrice: " + Asciugatrici[i].ProgrammaInCorso);
             if (Asciugatrici[i].InFunzione)
             {
-                Console.WriteLine("Stato: In lavaggio");
+                Console.WriteLine("Stato: In asciugatura");
             }
             else
             {
@@ -58,10 +85,8 @@ public class Lavanderia
         }
     }
 
-    public void InterrogaMacchine()
+    public void InterrogaMacchine(string interrogazione)
     {
-        Console.WriteLine("Vuoi interrogare una lavatrice o un'asciugatrice? [lavatrice/asciugatrice]");
-        string interrogazione = Console.ReadLine();
         if (interrogazione == "lavatrice")
         {
             Console.WriteLine("Scegli la lavatrice [1,2,3,4,5]");
@@ -80,12 +105,13 @@ public class Lavanderia
                 Console.WriteLine("stato serbatoio detersivo: " + Lavatrici[lavatriceScelta - 1].SerbatoioDetersivo);
                 Console.WriteLine("stato serbatoio ammorbidente: " + Lavatrici[lavatriceScelta - 1].SerbatoioAmmorbidente);
                 Console.WriteLine("programma in funzione: " + Lavatrici[lavatriceScelta - 1].ProgrammaInCorso);
+                Console.WriteLine("durata programma: " + Lavatrici[lavatriceScelta - 1].DurataProgrammaInCorso + " minuti");
                 Console.WriteLine("l'incasso è: " + Lavatrici[lavatriceScelta - 1].Incasso);
             }
             else
             {
                 Console.WriteLine("inserisci un numero valido");
-                InterrogaMacchine();
+                InterrogaMacchine(interrogazione);
             }
         }
         else if (interrogazione == "asciugatrice")
@@ -97,26 +123,26 @@ public class Lavanderia
                 Console.WriteLine("nome asciugatrice: " + Asciugatrici[asciugatriceScelta - 1].Nome);
                 if (Asciugatrici[asciugatriceScelta - 1].InFunzione)
                 {
-                    Console.WriteLine("Stato: In lavaggio");
+                    Console.WriteLine("Stato: In asciugatura");
                 }
                 else
                 {
                     Console.WriteLine("Stato: inattiva");
                 }
+                Console.WriteLine("programma in funzione: " + Asciugatrici[asciugatriceScelta - 1].ProgrammaInCorso);
+                Console.WriteLine("durata programma: " + Asciugatrici[asciugatriceScelta - 1].DurataProgrammaInCorso + " minuti");
                 Console.WriteLine("l'incasso è: " + Asciugatrici[asciugatriceScelta - 1].Incasso);
             }
             else
             {
                 Console.WriteLine("fai una scelta appropriata");
-                InterrogaMacchine();
+                InterrogaMacchine(interrogazione);
             }
         }
         else
         {
             Console.WriteLine("fai una scelta appropriata");
-            InterrogaMacchine();
+            InterrogaMacchine(interrogazione);
         }
-
     }
-
 }
